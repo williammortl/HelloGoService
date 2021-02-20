@@ -1,6 +1,9 @@
 package shared
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+)
 
 // GetIP gets a requests IP address by reading off the forwarded-for
 // header (for proxies) and falls back to use the remote address.
@@ -10,4 +13,15 @@ func GetIP(r *http.Request) string {
 		return forwarded
 	}
 	return r.RemoteAddr
+}
+
+// ErrorHTML generates an HTML error message
+func ErrorHTML(title string, message string) string {
+	return fmt.Sprintf(`
+	<html>
+	<title>%v</title>
+	<body>
+		%v <br />
+	</body>
+	</html>`, title, message)
 }

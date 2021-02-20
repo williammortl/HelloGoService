@@ -16,16 +16,21 @@ type pingResponse struct {
 	Time    string `json:"time"`
 }
 
+// telemetry for ping
+var telemetryPing *telemetry.Telemetry
+
 // PingHandler is a http handler for "ping" requests
 func PingHandler() func(w http.ResponseWriter, r *http.Request) {
-	telemetryPing := telemetry.InitializeTelemetryDefault("Ping")
+	if telemetryPing == nil {
+		telemetryPing = telemetry.InitializeTelemetryDefault("Ping")
+	}
 	return func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "application/json")
 		response, _ := json.Marshal(pingResponse{
 			Message: "Pong!",
 			Time:    time.Now().Format(time.RFC850),
 		})
+		w.Header().Set("Content-Type", "application/json")
 		fmt.Fprintf(w, string(response))
-		(*telemetryPing).LogInfo("Call", fmt.Sprintf("Ping from: %v", shared.GetIP(r)))
+		(*telemetryPing).LogInfo("Call", fmt.Sprintf("Ping! IP: %v", shared.GetIP(r)))
 	}
 }

@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "6c74125f-8167-433b-8036-d0dcf4a61f0a",
+		"name": "Localhost",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HelloGoService::DBAdd",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"name\": \"Taylor Swift\", \"address\": \"10th Street\", \"phone\": \"6155551212\" }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/db/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"db",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HelloGoService::Math",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"numbers\": [1, 2, 3, 4] }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/math/+",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"math",
+						"+"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
