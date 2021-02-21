@@ -25,9 +25,12 @@ var telemetryDBGet *telemetry.Telemetry
 // @Failure 400 "error message"
 // @Router /db/{id} [get]
 func DBGetHandler() func(w http.ResponseWriter, r *http.Request) {
+
+	// initialize telemetry only on the first call
 	if telemetryDBGet == nil {
 		telemetryDBGet = telemetry.InitializeTelemetryDefault("DBGet")
 	}
+
 	return func(w http.ResponseWriter, r *http.Request) {
 
 		// get {id} from the REST path

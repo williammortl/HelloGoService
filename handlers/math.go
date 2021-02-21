@@ -39,9 +39,12 @@ var telemetryMath *telemetry.Telemetry
 // @Failure 400 "error message"
 // @Router /math/{operator} [post]
 func MathHandler() func(w http.ResponseWriter, r *http.Request) {
+
+	// initialize telemetry only on the first call
 	if telemetryMath == nil {
 		telemetryMath = telemetry.InitializeTelemetryDefault("Math")
 	}
+
 	return func(w http.ResponseWriter, r *http.Request) {
 
 		// read JSON body

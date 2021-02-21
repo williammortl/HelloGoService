@@ -28,9 +28,12 @@ var telemetryHello *telemetry.Telemetry
 // @Failure 400 "error message"
 // @Router /hello [get]
 func HelloHandler() func(w http.ResponseWriter, r *http.Request) {
+
+	// initialize telemetry only on the first call
 	if telemetryHello == nil {
 		telemetryHello = telemetry.InitializeTelemetryDefault("Hello")
 	}
+
 	return func(w http.ResponseWriter, r *http.Request) {
 		name := r.URL.Query().Get("name")
 		if name != "" {

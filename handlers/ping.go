@@ -27,9 +27,12 @@ var telemetryPing *telemetry.Telemetry
 // @Success 200 {object} pingResponse
 // @Router /ping [get]
 func PingHandler() func(w http.ResponseWriter, r *http.Request) {
+
+	// initialize telemetry only on the first call
 	if telemetryPing == nil {
 		telemetryPing = telemetry.InitializeTelemetryDefault("Ping")
 	}
+
 	return func(w http.ResponseWriter, r *http.Request) {
 		response, _ := json.Marshal(pingResponse{
 			Message: "Pong!",

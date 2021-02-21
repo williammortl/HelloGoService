@@ -25,9 +25,12 @@ var telemetryHome *telemetry.Telemetry
 // @Success 200 "html"
 // @Router / [get]
 func HomeHandler() func(w http.ResponseWriter, r *http.Request) {
+
+	// initialize telemetry only on the first call
 	if telemetryHome == nil {
 		telemetryHome = telemetry.InitializeTelemetryDefault("Home")
 	}
+
 	return func(w http.ResponseWriter, r *http.Request) {
 
 		// load readme markdown file

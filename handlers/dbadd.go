@@ -28,9 +28,12 @@ var telemetryDBAdd *telemetry.Telemetry
 // @Failure 400 "error message"
 // @Router /db/{id} [post]
 func DBAddHandler() func(w http.ResponseWriter, r *http.Request) {
+
+	// initialize telemetry only on the first call
 	if telemetryDBAdd == nil {
 		telemetryDBAdd = telemetry.InitializeTelemetryDefault("DBAdd")
 	}
+
 	return func(w http.ResponseWriter, r *http.Request) {
 
 		// read JSON body
