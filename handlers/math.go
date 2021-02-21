@@ -27,7 +27,17 @@ const (
 // telemetry for math
 var telemetryMath *telemetry.Telemetry
 
-// MathHandler is a http handler for "hello" requests
+// MathHandler is a http handler for math requests
+// @Summary mathematics service
+// @Description performs 3 operations: sum, subtract, multiply
+// @Tags advanced services
+// @Accept json
+// @Produce json
+// @Param operator path string true "+|-|*"
+// @Param message body mathNumbers true "numbers"
+// @Success 200 {object} mathNumbers
+// @Failure 400 "error message"
+// @Router /math/{operator} [post]
 func MathHandler() func(w http.ResponseWriter, r *http.Request) {
 	if telemetryMath == nil {
 		telemetryMath = telemetry.InitializeTelemetryDefault("Math")

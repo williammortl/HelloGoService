@@ -1,4 +1,166 @@
+definitions:
+  db.Person:
+    properties:
+      address:
+        type: string
+      name:
+        type: string
+      phone:
+        type: string
+    type: object
+  handlers.helloResponse:
+    properties:
+      message:
+        type: string
+      name:
+        type: string
+    type: object
+  handlers.mathNumbers:
+    properties:
+      numbers:
+        items:
+          type: integer
+        type: array
+    type: object
+  handlers.pingResponse:
+    properties:
+      message:
+        type: string
+      time:
+        type: string
+    type: object
 info:
-  contact: {}
-paths: {}
+  contact:
+    email: will@{insert my full name here}.com
+    name: William Mortl
+    url: https://github.com/williammortl/HelloGoService
+  description: This is a suite of simple service API's.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Hello GO Service Example API
+  version: "1.0"
+paths:
+  /:
+    get:
+      description: returns the readme file
+      produces:
+      - text/html
+      responses:
+        "200":
+          description: html
+      summary: home page
+      tags:
+      - basic services
+  /db/{id}:
+    get:
+      description: gets a record
+      parameters:
+      - description: database id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/db.Person'
+        "400":
+          description: error message
+      summary: db service - retrieve
+      tags:
+      - advanced services
+    post:
+      consumes:
+      - application/json
+      description: adds or updates a record
+      parameters:
+      - description: database id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: data
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/db.Person'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok message
+        "400":
+          description: error message
+      summary: db service - add / update
+      tags:
+      - advanced services
+  /hello:
+    get:
+      description: get a "hello world" message
+      parameters:
+      - description: User Name
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.helloResponse'
+        "400":
+          description: error message
+      summary: gets a "hello world" message
+      tags:
+      - basic services
+  /math/{operator}:
+    post:
+      consumes:
+      - application/json
+      description: 'performs 3 operations: sum, subtract, multiply'
+      parameters:
+      - description: +|-|*
+        in: path
+        name: operator
+        required: true
+        type: string
+      - description: numbers
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.mathNumbers'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.mathNumbers'
+        "400":
+          description: error message
+      summary: mathematics service
+      tags:
+      - advanced services
+  /ping:
+    get:
+      description: returns a message when pinged
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.pingResponse'
+      summary: pings the service
+      tags:
+      - basic services
 swagger: "2.0"

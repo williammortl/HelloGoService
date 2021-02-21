@@ -18,6 +18,12 @@ const markdownFilename string = "README.md"
 var telemetryHome *telemetry.Telemetry
 
 // HomeHandler is a http handler for "ping" requests
+// @Summary home page
+// @Description returns the readme file
+// @Tags basic services
+// @Produce html
+// @Success 200 "html"
+// @Router / [get]
 func HomeHandler() func(w http.ResponseWriter, r *http.Request) {
 	if telemetryHome == nil {
 		telemetryHome = telemetry.InitializeTelemetryDefault("Home")

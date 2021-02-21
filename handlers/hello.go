@@ -19,6 +19,14 @@ type helloResponse struct {
 var telemetryHello *telemetry.Telemetry
 
 // HelloHandler is a http handler for "hello" requests
+// @Summary gets a "hello world" message
+// @Description get a "hello world" message
+// @Tags basic services
+// @Produce json
+// @Param name query string true "User Name"
+// @Success 200 {object} helloResponse
+// @Failure 400 "error message"
+// @Router /hello [get]
 func HelloHandler() func(w http.ResponseWriter, r *http.Request) {
 	if telemetryHello == nil {
 		telemetryHello = telemetry.InitializeTelemetryDefault("Hello")

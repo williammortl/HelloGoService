@@ -17,6 +17,16 @@ import (
 var telemetryDBAdd *telemetry.Telemetry
 
 // DBAddHandler is a http handler for adding / updating records
+// @Summary db service - add / update
+// @Description adds or updates a record
+// @Tags advanced services
+// @Accept json
+// @Produce json
+// @Param id path int true "database id"
+// @Param message body db.Person true "data"
+// @Success 200 "ok message"
+// @Failure 400 "error message"
+// @Router /db/{id} [post]
 func DBAddHandler() func(w http.ResponseWriter, r *http.Request) {
 	if telemetryDBAdd == nil {
 		telemetryDBAdd = telemetry.InitializeTelemetryDefault("DBAdd")

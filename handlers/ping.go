@@ -20,6 +20,12 @@ type pingResponse struct {
 var telemetryPing *telemetry.Telemetry
 
 // PingHandler is a http handler for "ping" requests
+// @Summary pings the service
+// @Description returns a message when pinged
+// @Tags basic services
+// @Produce json
+// @Success 200 {object} pingResponse
+// @Router /ping [get]
 func PingHandler() func(w http.ResponseWriter, r *http.Request) {
 	if telemetryPing == nil {
 		telemetryPing = telemetry.InitializeTelemetryDefault("Ping")

@@ -16,6 +16,14 @@ import (
 var telemetryDBGet *telemetry.Telemetry
 
 // DBGetHandler is a http handler for db get requests
+// @Summary db service - retrieve
+// @Description gets a record
+// @Tags advanced services
+// @Produce json
+// @Param id path int true "database id"
+// @Success 200 {object} db.Person
+// @Failure 400 "error message"
+// @Router /db/{id} [get]
 func DBGetHandler() func(w http.ResponseWriter, r *http.Request) {
 	if telemetryDBGet == nil {
 		telemetryDBGet = telemetry.InitializeTelemetryDefault("DBGet")

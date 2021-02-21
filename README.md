@@ -63,3 +63,9 @@ Post JSON in this format to the above URL to sum the numbers below: <br>
 Metrics are provided by [Prometheus](https://prometheus.io/). <br>
 
 **Prometheus metrics service**: http://localhost:8080/metrics
+
+### Swagger Documentation
+
+Service documentation provided by [swaggo](https://github.com/swaggo/http-swagger). <br>
+
+**Swagger service**: http://localhost:8080/swagger/index.html
