@@ -13,15 +13,15 @@ import (
 
 // mathNumbers is used to load an array of numbers from JSON
 type mathNumbers struct {
-	Numbers []int `json:"numbers"`
+	Numbers []float64 `json:"numbers"`
 }
 
 type operator string
 
 const (
-	add      operator = "+"
-	subtract operator = "-"
-	multiply operator = "*"
+	add      operator = "Add"
+	subtract operator = "Subtract"
+	multiply operator = "Multiply"
 )
 
 // telemetry for math
@@ -29,15 +29,15 @@ var telemetryMath *telemetry.Telemetry
 
 // MathHandler is a http handler for math requests
 // @Summary mathematics service
-// @Description performs 3 operations: sum, subtract, multiply
+// @Description performs 3 operations: Add, Subtract, Multiply
 // @Tags advanced services
 // @Accept json
 // @Produce json
-// @Param operator path string true "+|-|*"
+// @Param operator path string true "Add|Subtract|Multiply"
 // @Param message body mathNumbers true "numbers"
 // @Success 200 {object} mathNumbers
 // @Failure 400 "error message"
-// @Router /math/{operator} [post]
+// @Router /Math/{operator} [post]
 func MathHandler() func(w http.ResponseWriter, r *http.Request) {
 
 	// initialize telemetry only on the first call
@@ -70,25 +70,25 @@ func MathHandler() func(w http.ResponseWriter, r *http.Request) {
 
 		// do the math
 		operatorIn := operator(mux.Vars(r)["operator"])
-		var operatorFunction func(total int, number int) int
+		var operatorFunction func(total float64, number float64) float64
 		switch operatorIn {
 		case add:
 			{
-				operatorFunction = func(total int, number int) int {
+				operatorFunction = func(total float64, number float64) float64 {
 					return total + number
 				}
 				break
 			}
 		case subtract:
 			{
-				operatorFunction = func(total int, number int) int {
+				operatorFunction = func(total float64, number float64) float64 {
 					return total - number
 				}
 				break
 			}
 		case multiply:
 			{
-				operatorFunction = func(total int, number int) int {
+				operatorFunction = func(total float64, number float64) float64 {
 					return total * number
 				}
 				break
@@ -105,12 +105,12 @@ func MathHandler() func(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// call go routine... this is the equivalent of a go thread
-		c := make(chan int)
+		c := make(chan float64)
 		go threadMath(numbersIn.Numbers, operatorFunction, c)
 
 		// wait for channel c to have a response
 		var ret mathNumbers
-		ret.Numbers = make([]int, 1)
+		ret.Numbers = make([]float64, 1)
 		ret.Numbers[0] = <-c
 
 		// output the total
@@ -122,7 +122,7 @@ func MathHandler() func(w http.ResponseWriter, r *http.Request) {
 }
 
 // threadMath is a go routine that performs math as if it was a separate thread
-func threadMath(numbers []int, operatorFunction func(total int, number int) int, c chan int) {
+func threadMath(numbers []float64, operatorFunction func(total float64, number float64) float64, c chan float64) {
 	total := numbers[0]
 	for i := 1; i < len(numbers); i++ {
 		total = operatorFunction(total, numbers[i])

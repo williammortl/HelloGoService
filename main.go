@@ -33,19 +33,19 @@ func main() {
 	router.HandleFunc("/", handlers.HomeHandler())
 
 	// handler for ping
-	router.HandleFunc("/ping", handlers.PingHandler())
+	router.HandleFunc("/Ping", handlers.PingHandler())
 
 	// handler for hello
-	router.HandleFunc("/hello", handlers.HelloHandler())
+	router.HandleFunc("/Hello", handlers.HelloHandler())
 
 	// handler for db get
-	router.HandleFunc("/db/{id}", handlers.DBGetHandler()).Methods("GET")
+	router.HandleFunc("/Db/{id}", handlers.DBGetHandler()).Methods("GET")
 
 	// handler for db update / add
-	router.HandleFunc("/db/{id}", handlers.DBAddHandler()).Methods("POST")
+	router.HandleFunc("/Db/{id}", handlers.DBAddHandler()).Methods("POST")
 
 	// handler for math
-	router.HandleFunc("/math/{operator}", handlers.MathHandler()).Methods("POST")
+	router.HandleFunc("/Math/{operator}", handlers.MathHandler()).Methods("POST")
 
 	// handler for prometheus
 	router.Handle("/metrics", promhttp.Handler())

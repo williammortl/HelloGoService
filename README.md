@@ -32,10 +32,10 @@ From the CLI, run the container: **docker container run -p 8080:8080 -it {image 
 ## Services Provided
 
 ### REST Services Documentation
-**Ping service**: http://localhost:8080/ping <br><br>
-**Hello service**: http://localhost:8080/hello?name=YourNameHere <br><br>
-**Database Get service** (retrieves by ID which is an int value, replace the trailing 0 with any int): http://localhost:8080/db/0 <br><br>
-**Database Add / Update service** (adds / updates by ID, replace the trailing 4 with any int): http://localhost:8080/db/4 <br><br>
+**Ping service**: http://localhost:8080/Ping <br><br>
+**Hello service**: http://localhost:8080/Hello?name=YourNameHere <br><br>
+**Database Get service** (retrieves by ID which is an int value, replace the trailing 0 with any int): http://localhost:8080/Db/0 <br><br>
+**Database Add / Update service** (adds / updates by ID, replace the trailing 4 with any int): http://localhost:8080/Db/4 <br><br>
 Post JSON in this format to the above URL to add this person to the database with id 4: <br>
 ```
 {
@@ -44,7 +44,7 @@ Post JSON in this format to the above URL to add this person to the database wit
     "phone": "6155551212",
 }
 ``` 
-<br> **Math service** (allowed operators: +, -, *): http://localhost:8080/math/+
+<br> **Math service** (allowed operators: Add, Subtract, Multiple): http://localhost:8080/Math/Add
 <br><br>
 Post JSON in this format to the above URL to sum the numbers below: <br>
 ```

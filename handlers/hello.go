@@ -26,7 +26,7 @@ var telemetryHello *telemetry.Telemetry
 // @Param name query string true "User Name"
 // @Success 200 {object} helloResponse
 // @Failure 400 "error message"
-// @Router /hello [get]
+// @Router /Hello [get]
 func HelloHandler() func(w http.ResponseWriter, r *http.Request) {
 
 	// initialize telemetry only on the first call

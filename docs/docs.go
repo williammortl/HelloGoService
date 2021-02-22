@@ -50,7 +50,7 @@ var doc = `{
                 }
             }
         },
-        "/db/{id}": {
+        "/Db/{id}": {
             "get": {
                 "description": "gets a record",
                 "produces": [
@@ -121,7 +121,7 @@ var doc = `{
                 }
             }
         },
-        "/hello": {
+        "/Hello": {
             "get": {
                 "description": "get a \"hello world\" message",
                 "produces": [
@@ -153,9 +153,9 @@ var doc = `{
                 }
             }
         },
-        "/math/{operator}": {
+        "/Math/{operator}": {
             "post": {
-                "description": "performs 3 operations: sum, subtract, multiply",
+                "description": "performs 3 operations: Add, Subtract, Multiply",
                 "consumes": [
                     "application/json"
                 ],
@@ -169,7 +169,7 @@ var doc = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "+|-|*",
+                        "description": "Add|Subtract|Multiply",
                         "name": "operator",
                         "in": "path",
                         "required": true
@@ -197,7 +197,7 @@ var doc = `{
                 }
             }
         },
-        "/ping": {
+        "/Ping": {
             "get": {
                 "description": "returns a message when pinged",
                 "produces": [
@@ -250,7 +250,7 @@ var doc = `{
                 "numbers": {
                     "type": "array",
                     "items": {
-                        "type": "integer"
+                        "type": "number"
                     }
                 }
             }

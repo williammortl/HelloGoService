@@ -25,7 +25,7 @@ var telemetryPing *telemetry.Telemetry
 // @Tags basic services
 // @Produce json
 // @Success 200 {object} pingResponse
-// @Router /ping [get]
+// @Router /Ping [get]
 func PingHandler() func(w http.ResponseWriter, r *http.Request) {
 
 	// initialize telemetry only on the first call

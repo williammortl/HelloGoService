@@ -33,7 +33,7 @@
                 }
             }
         },
-        "/db/{id}": {
+        "/Db/{id}": {
             "get": {
                 "description": "gets a record",
                 "produces": [
@@ -104,7 +104,7 @@
                 }
             }
         },
-        "/hello": {
+        "/Hello": {
             "get": {
                 "description": "get a \"hello world\" message",
                 "produces": [
@@ -136,9 +136,9 @@
                 }
             }
         },
-        "/math/{operator}": {
+        "/Math/{operator}": {
             "post": {
-                "description": "performs 3 operations: sum, subtract, multiply",
+                "description": "performs 3 operations: Add, Subtract, Multiply",
                 "consumes": [
                     "application/json"
                 ],
@@ -152,7 +152,7 @@
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "+|-|*",
+                        "description": "Add|Subtract|Multiply",
                         "name": "operator",
                         "in": "path",
                         "required": true
@@ -180,7 +180,7 @@
                 }
             }
         },
-        "/ping": {
+        "/Ping": {
             "get": {
                 "description": "returns a message when pinged",
                 "produces": [
@@ -233,7 +233,7 @@
                 "numbers": {
                     "type": "array",
                     "items": {
-                        "type": "integer"
+                        "type": "number"
                     }
                 }
             }

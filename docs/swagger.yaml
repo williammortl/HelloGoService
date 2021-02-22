@@ -19,7 +19,7 @@ definitions:
     properties:
       numbers:
         items:
-          type: integer
+          type: number
         type: array
     type: object
   handlers.pingResponse:
@@ -53,7 +53,7 @@ paths:
       summary: home page
       tags:
       - basic services
-  /db/{id}:
+  /Db/{id}:
     get:
       description: gets a record
       parameters:
@@ -100,7 +100,7 @@ paths:
       summary: db service - add / update
       tags:
       - advanced services
-  /hello:
+  /Hello:
     get:
       description: get a "hello world" message
       parameters:
@@ -121,13 +121,13 @@ paths:
       summary: gets a "hello world" message
       tags:
       - basic services
-  /math/{operator}:
+  /Math/{operator}:
     post:
       consumes:
       - application/json
-      description: 'performs 3 operations: sum, subtract, multiply'
+      description: 'performs 3 operations: Add, Subtract, Multiply'
       parameters:
-      - description: +|-|*
+      - description: Add|Subtract|Multiply
         in: path
         name: operator
         required: true
@@ -150,7 +150,7 @@ paths:
       summary: mathematics service
       tags:
       - advanced services
-  /ping:
+  /Ping:
     get:
       description: returns a message when pinged
       produces:
