@@ -15,14 +15,14 @@
 					"raw": "{ \"name\": \"Taylor Swift\", \"address\": \"10th Street\", \"phone\": \"6155551212\" }"
 				},
 				"url": {
-					"raw": "http://localhost:8080/db/4",
+					"raw": "http://localhost:8080/Db/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"db",
+						"Db",
 						"4"
 					]
 				}
@@ -39,15 +39,15 @@
 					"raw": "{ \"numbers\": [1, 2, 3, 4] }"
 				},
 				"url": {
-					"raw": "http://localhost:8080/math/+",
+					"raw": "http://localhost:8080/Math/Add",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"math",
-						"+"
+						"Math",
+						"Add"
 					]
 				}
 			},

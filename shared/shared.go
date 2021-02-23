@@ -1,7 +1,6 @@
 package shared
 
 import (
-	"fmt"
 	"net/http"
 )
 
@@ -13,15 +12,4 @@ func GetIP(r *http.Request) string {
 		return forwarded
 	}
 	return r.RemoteAddr
-}
-
-// ErrorHTML generates an HTML error message
-func ErrorHTML(title string, message string) string {
-	return fmt.Sprintf(`
-	<html>
-	<title>%v</title>
-	<body>
-		%v <br />
-	</body>
-	</html>`, title, message)
 }
